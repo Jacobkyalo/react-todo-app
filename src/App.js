@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
+import TodoForm from "./TodoForm";
 import Todos from "./Todos";
 
-function App() {
+const App = () => {
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -11,7 +12,7 @@ function App() {
     },
     {
       id: 2,
-      text: "Cook delicious food",
+      text: "Cook delicious food and clean the kitchen",
       isCompleted: false,
     },
     {
@@ -20,20 +21,27 @@ function App() {
       isCompleted: false,
     },
   ]);
+
+  const addTodo = (todo) => {
+    setTodos([...todos, { text: todo }]);
+  };
+
+  const handleDelete = (id) => {
+    setTodos(todos.filter((todo) => todo.id != id));
+  };
   return (
     <div className="container-outer">
       <div className="container-inner">
-        <div className="todo-heading">
+        <div className="app-heading">
           <h1>My Todo App</h1>
         </div>
-        <div className="todos">
-          {todos.map((todo, index) => (
-            <Todos todo={todo} key={index} />
-          ))}
+        <div className="todo-form">
+          <TodoForm addTodo={addTodo} />
         </div>
+        <Todos todos={todos} onDelete={handleDelete} />
       </div>
     </div>
   );
-}
+};
 
 export default App;
