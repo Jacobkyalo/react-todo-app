@@ -23,7 +23,8 @@ const App = () => {
   ]);
 
   const addTodo = (todo) => {
-    setTodos([...todos, { text: todo }]);
+    let id = Math.floor(Math.random() * 100);
+    setTodos([...todos, { id, text: todo }]);
   };
 
   const handleDelete = (id) => {

@@ -8,7 +8,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 .container-outer {
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to right, #bd2413, coral);
   display: flex;
   justify-content: center;
